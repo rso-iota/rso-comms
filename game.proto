@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+option go_package = "../";
+
+message Empty {}
+
+message GameID {
+    string id = 1;
+}
+
+message GameIDList {
+    repeated string ids = 1;
+}
+
+service GameService {
+    rpc CreateGame(Empty) returns (GameID) {}
+    rpc ListRunningGames(Empty) returns (GameIDList) {}
+}
