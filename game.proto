@@ -8,11 +8,27 @@ message GameID {
     string id = 1;
 }
 
+message GameLocation {
+    string hostname = 1;
+    GameID id = 2;
+}
+
 message GameIDList {
     repeated string ids = 1;
 }
 
+message GameData {
+    repeated Player players = 1;
+}
+
+message Player {
+    string username = 1;
+    float size = 2;
+}
+
 service GameService {
-    rpc CreateGame(Empty) returns (GameID) {}
-    rpc ListRunningGames(Empty) returns (GameIDList) {}
+    rpc CreateGame(Empty) returns (GameLocation) {}
+    rpc DeleteGame(GameID) returns (GameID) {}
+
+    rpc LiveData(GameID) returns (GameData) {}
 }
