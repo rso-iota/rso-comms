@@ -1,8 +1,6 @@
 syntax = "proto3";
 
-option go_package = "../";
-
-message Empty {}
+package rso_comms;
 
 message GameID {
     string id = 1;
